@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="./assets/css/layout.css">
+  <link rel="stylesheet" href="./assets/css/main.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="./assets/js/main.js"></script>
+</head>
+
+<!-- 
+  1. 빨강색으로 표시한 부분
+  2. 검정배경 뒤로 깜빡 거릴 때 마다 별 모양 / 
+  3. 흰색 선 / card 들의 배경색, body배경색 (그냥 검정이 아님) 원본사이트와 다름
+  4. 스크롤 발생시 메인글씨 아래서 위로 움직임
+  5. menu클릭시 그 영역으로 이동 움직임 발생
+-->
+
+<body>
+  <aside class="fixed-btn">
+    <a href="" class="awards">
+      <g class="color-text" fill="black">
+        <path d="M20.048 153.585v-2.002l6.752-3.757h-6.752v-1.9h10.23v2.002l-6.752 3.757h6.752v1.9zM29.899 142.382a3.317 3.317 0 0 1-1.359 1.293c-.575.297-1.223.446-1.944.446-.721 0-1.369-.149-1.944-.446a3.317 3.317 0 0 1-1.359-1.293c-.331-.564-.497-1.232-.497-2.003 0-.769.166-1.437.497-2.002a3.332 3.332 0 0 1 1.359-1.294c.575-.297 1.224-.445 1.944-.445.722 0 1.369.148 1.944.445a3.326 3.326 0 0 1 1.359 1.294c.33.565.496 1.233.496 2.002.001.77-.166 1.438-.496 2.003m-1.703-3.348c-.435-.331-.967-.497-1.601-.497s-1.167.166-1.601.497c-.434.332-.65.78-.65 1.345s.217 1.014.65 1.346c.434.33.967.496 1.601.496s1.166-.166 1.601-.496c.434-.332.649-.78.649-1.346.001-.565-.215-1.013-.649-1.345M22.912 134.996v-1.812h1.185c-.43-.283-.752-.593-.973-.929-.219-.336-.329-.732-.329-1.19 0-.479.127-.902.38-1.272.254-.37.635-.633 1.141-.79-.478-.262-.851-.591-1.118-.985a2.221 2.221 0 0 1-.402-1.265c0-.682.2-1.218.599-1.607.4-.391.957-.585 1.668-.585h5.218v1.812H25.37c-.682 0-1.023.303-1.023.907 0 .467.264.85.789 1.146.527.299 1.286.446 2.28.446h2.865v1.813H25.37c-.682 0-1.023.303-1.023.906 0 .468.275.851.826 1.147.551.298 1.352.446 2.404.446h2.704v1.812h-7.369zM21.626 122.457c-.225.224-.502.336-.833.336s-.608-.112-.833-.336a1.128 1.128 0 0 1-.336-.833c0-.331.111-.609.336-.833.225-.225.502-.336.833-.336s.608.111.833.336c.225.224.337.502.337.833 0 .332-.112.608-.337.833m1.286-1.739h7.366v1.813h-7.366v-1.813zM22.912 118.668v-1.812h1.185a3.348 3.348 0 0 1-.951-1.009 2.434 2.434 0 0 1-.351-1.272c0-.681.19-1.229.57-1.644.38-.414.931-.621 1.651-.621h5.263v1.812h-4.722c-.418 0-.727.096-.92.285-.195.19-.293.447-.293.769 0 .302.116.58.351.833.233.254.577.458 1.03.613.453.156.992.234 1.615.234h2.938v1.812h-7.366zM29.833 109.129a3.33 3.33 0 0 1-1.432 1.169 4.535 4.535 0 0 1-1.805.373 4.537 4.537 0 0 1-1.807-.373c-.579-.248-1.057-.638-1.432-1.169s-.563-1.196-.563-1.995c0-.771.183-1.413.549-1.93a3.28 3.28 0 0 1 1.382-1.141 4.221 4.221 0 0 1 1.709-.364h.746v5.071c.447-.02.838-.183 1.168-.49.332-.307.498-.724.498-1.248 0-.41-.093-.754-.277-1.031-.186-.278-.473-.529-.863-.753l.542-1.462c.69.303 1.224.724 1.592 1.265.371.541.556 1.235.556 2.083 0 .799-.188 1.464-.563 1.995m-4.085-3.574c-.41.088-.746.261-1.009.52-.262.258-.395.61-.395 1.06 0 .428.137.784.409 1.067.272.282.604.458.994.525v-3.172zM29.833 100.878c-.375.531-.852.921-1.432 1.169a4.552 4.552 0 0 1-3.612 0c-.579-.248-1.057-.638-1.432-1.169s-.563-1.196-.563-1.995c0-.77.183-1.412.549-1.93a3.278 3.278 0 0 1 1.382-1.14 4.222 4.222 0 0 1 1.709-.365h.746v5.072a1.794 1.794 0 0 0 1.168-.49c.332-.307.498-.724.498-1.249 0-.41-.093-.753-.277-1.031-.186-.277-.473-.528-.863-.753l.542-1.462c.69.302 1.224.724 1.592 1.265.371.541.556 1.234.556 2.083 0 .799-.188 1.464-.563 1.995m-4.085-3.573c-.41.088-.746.261-1.009.519-.262.258-.395.611-.395 1.06 0 .429.137.784.409 1.067.272.282.604.458.994.526v-3.172zM35.481 16.926l-4.782 14.969h-3.266l-2.584-9.682-2.584 9.682h-3.268l-4.781-14.969h3.713l2.673 10.276 2.524-10.276h3.445l2.524 10.276 2.674-10.276zM37.979 27.083c1.426 0 2.495 1.068 2.495 2.495 0 1.425-1.069 2.495-2.495 2.495-1.425 0-2.495-1.07-2.495-2.495-.001-1.427 1.07-2.495 2.495-2.495"></path>
+      </g>
+      <p>Nominee</p>
+    </a>
+  </aside>
+
+  <div class="wrapper">
+    <header class="header">
+      <div class="header-inner">
+        <h1 class="logo">
+          <a href="">
+            <span class="blind">shreve</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="currentColor" viewBox="0 0 1508 862">
+              <path d="M384.365 519.094c131.126 8.351 264.67-41.079 359.393-146.124C838.481 267.925 873.717 130.183 851.635.906c-131.126-8.35-264.67 41.079-359.393 146.124-94.723 105.045-129.959 242.787-107.877 372.064ZM907 0c0 166.238 134.54 301 300.5 301S1508 166.238 1508 0H907Zm216.64 342.906c-131.131-8.351-264.675 41.079-359.398 146.124-94.723 105.045-129.959 242.787-107.877 372.064 131.126 8.351 264.67-41.079 359.395-146.124 94.72-105.045 129.96-242.787 107.88-372.064ZM601 861c0-166.238-134.538-301-300.5-301S0 694.762 0 861h601Z"></path>
+            </svg>
+          </a>
+        </h1>
+        <nav class="gnb">
+          <ul class="nav-item">
+            <li class="nav-list"><a href="">Service</a></li>
+            <li class="nav-list"><a href="">Benefits</a></li>
+            <li class="nav-list"><a href="">About Noah</a></li>
+            <li class="nav-list"><a href="">FAQs</a></li>
+          </ul>
+        </nav>
+        <div class="common-sm-btn">
+          <a href="#package" class="join btn">
+            <div class="text">Join a plan</div>
+            <div class="svg">
+              <svg width="100%" height="100%" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10.5 0.5C5 0.5 0.5 5 0.5 10.5C0.5 16 5 20.5 10.5 20.5C16 20.5 20.5 16 20.5 10.5C20.5 5 16 0.5 10.5 0.5ZM14.2 11.2L11.2 14.2C10.8 14.6 10.2 14.6 9.8 14.2C9.4 13.8 9.4 13.2 9.8 12.8L11.1 11.5H7.5C6.9 11.5 6.5 11.1 6.5 10.5C6.5 9.9 6.9 9.5 7.5 9.5H11.1L9.8 8.2C9.4 7.8 9.4 7.2 9.8 6.8C10.2 6.4 10.8 6.4 11.2 6.8L14.2 9.8C14.6 10.2 14.6 10.8 14.2 11.2Z" fill="currentColor"></path>
+              </svg>
+            </div>        
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="intro">
+        <div class="common-inner">
+          <div class="group-about">
+            <a href="#package" class="desc-btn">
+              <span class="text">Only 2 subscription spots remaining.</span>
+            </a>
+            <h2 class="headline">
+              <span class="gradi">Award Winning Design </span><br>
+              <span class="highlight">Designed</span><span class="gradi"> to Scale</span> 
+            </h2>
+            <p class="desc-area">Design subscriptions built to streamline <br>
+                                your team’s design process.</p>
+            <div class="btn-wrap">
+              <a href="#package" class="common-md-btn"><span>Explore plans</span>
+                <svg width="100%" height="100%" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10.5 0.5C5 0.5 0.5 5 0.5 10.5C0.5 16 5 20.5 10.5 20.5C16 20.5 20.5 16 20.5 10.5C20.5 5 16 0.5 10.5 0.5ZM14.2 11.2L11.2 14.2C10.8 14.6 10.2 14.6 9.8 14.2C9.4 13.8 9.4 13.2 9.8 12.8L11.1 11.5H7.5C6.9 11.5 6.5 11.1 6.5 10.5C6.5 9.9 6.9 9.5 7.5 9.5H11.1L9.8 8.2C9.4 7.8 9.4 7.2 9.8 6.8C10.2 6.4 10.8 6.4 11.2 6.8L14.2 9.8C14.6 10.2 14.6 10.8 14.2 11.2Z" fill="currentColor"></path>
+                </svg>              
+              </a>
+            </div>
+            <div class="review-area">
+              <span class="stars">
+                <svg width="100%" height="100%" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g filter="url(#filter0_ii_31_2)">
+                  <path d="M11.2083 13.373C11.1003 13.373 10.9938 13.3467 10.8981 13.2965L7.5 11.5101L4.10189 13.2965C3.99177 13.3544 3.86766 13.3803 3.74358 13.3714C3.61951 13.3624 3.50041 13.3189 3.39977 13.2458C3.29912 13.1727 3.22093 13.0729 3.17405 12.9576C3.12716 12.8424 3.11344 12.7164 3.13444 12.5937L3.78353 8.80989L1.03451 6.13055C0.945453 6.0437 0.882467 5.93366 0.852668 5.81289C0.822869 5.69211 0.827445 5.56541 0.865879 5.44709C0.904313 5.32878 0.975073 5.22358 1.07016 5.14337C1.16525 5.06317 1.28088 5.01116 1.40398 4.99322L5.20313 4.44113L6.902 0.998692C6.9634 0.894727 7.05085 0.808567 7.15572 0.748713C7.26058 0.688859 7.37924 0.657379 7.49998 0.657379C7.62073 0.657379 7.73938 0.688859 7.84425 0.748713C7.94911 0.808567 8.03656 0.894727 8.09796 0.998692L9.79686 4.44107L13.596 4.99316C13.7191 5.0111 13.8347 5.06311 13.9298 5.14331C14.0249 5.22352 14.0957 5.32872 14.1341 5.44703C14.1725 5.56535 14.1771 5.69205 14.1473 5.81283C14.1175 5.9336 14.0545 6.04364 13.9655 6.13049L11.2165 8.80983L11.8655 12.5937C11.882 12.6894 11.8773 12.7875 11.8518 12.8812C11.8263 12.9749 11.7807 13.0619 11.7181 13.1361C11.6555 13.2104 11.5774 13.27 11.4894 13.3109C11.4013 13.3519 11.3054 13.373 11.2083 13.373L11.2083 13.373Z" fill="#F1F4FA"></path>
+                  </g>
+                  <path d="M11.2038 13.123L11.2084 13.123C11.269 13.123 11.329 13.1098 11.384 13.0842C11.4391 13.0586 11.4879 13.0214 11.527 12.975C11.5661 12.9286 11.5946 12.8742 11.6105 12.8156C11.6265 12.7571 11.6294 12.6957 11.6191 12.6359L10.9701 8.85209L10.9478 8.72254L11.042 8.6308L13.7909 5.95152C13.8466 5.89722 13.886 5.82844 13.9046 5.75294C13.9232 5.67744 13.9204 5.59824 13.8963 5.52427C13.8723 5.45031 13.8281 5.38455 13.7686 5.33441C13.7092 5.28429 13.637 5.25179 13.5601 5.24056C13.56 5.24056 13.56 5.24055 13.56 5.24055L9.7609 4.68847L9.63084 4.66957L9.57267 4.55171L7.87839 1.11869C7.83936 1.05534 7.78502 1.00276 7.72032 0.965835C7.6532 0.927527 7.57726 0.907379 7.49998 0.907379C7.4227 0.907379 7.34676 0.927527 7.27964 0.965835C7.21495 1.00276 7.16061 1.05534 7.12157 1.11868L5.42731 4.55177L5.36915 4.66963L5.23908 4.68853L1.44002 5.24061C1.36307 5.25182 1.29079 5.28433 1.23135 5.33447C1.17191 5.38461 1.12767 5.45038 1.10365 5.52433C1.07962 5.59829 1.07676 5.6775 1.09539 5.753C1.11401 5.82847 1.15336 5.89723 1.209 5.95152C1.20902 5.95154 1.20904 5.95156 1.20906 5.95158L3.95802 8.63085L4.05215 8.7226L4.02993 8.85215L3.38085 12.6359C3.38085 12.636 3.38085 12.636 3.38084 12.636C3.36773 12.7126 3.37631 12.7914 3.40561 12.8634C3.43492 12.9354 3.48379 12.9978 3.5467 13.0435C3.60961 13.0892 3.68405 13.1164 3.76161 13.122C3.83916 13.1276 3.91673 13.1114 3.98556 13.0753C3.98556 13.0753 3.98557 13.0752 3.98558 13.0752L7.38367 11.2888L7.5 11.2276L7.61634 11.2888L11.0142 13.0751L11.2038 13.123ZM11.2038 13.123C11.1378 13.1223 11.0729 13.1059 11.0144 13.0753L11.2038 13.123Z" stroke="url(#paint0_linear_31_2)" stroke-width="0.5"></path>
+                  <defs>
+                  <filter id="filter0_ii_31_2" x="0.833252" y="-1.34262" width="13.3335" height="20.7157" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                  <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
+                  <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"></feBlend>
+                  <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"></feColorMatrix>
+                  <feOffset dy="6"></feOffset>
+                  <feGaussianBlur stdDeviation="6"></feGaussianBlur>
+                  <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"></feComposite>
+                  <feColorMatrix type="matrix" values="0 0 0 0 0.0748611 0 0 0 0 0.683142 0 0 0 0 0.816667 0 0 0 0.25 0"></feColorMatrix>
+                  <feBlend mode="normal" in2="shape" result="effect1_innerShadow_31_2"></feBlend>
+                  <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"></feColorMatrix>
+                  <feOffset dy="-2"></feOffset>
+                  <feGaussianBlur stdDeviation="7"></feGaussianBlur>
+                  <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"></feComposite>
+                  <feColorMatrix type="matrix" values="0 0 0 0 0.101424 0 0 0 0 0.452173 0 0 0 0 0.529167 0 0 0 0.36 0"></feColorMatrix>
+                  <feBlend mode="normal" in2="effect1_innerShadow_31_2" result="effect2_innerShadow_31_2"></feBlend>
+                  </filter>
+                  <linearGradient id="paint0_linear_31_2" x1="7.49999" y1="0.657379" x2="7.49999" y2="13.3731" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#274F52" stop-opacity="0.37"></stop>
+                  <stop offset="1" stop-color="#274A52"></stop>
+                  </linearGradient>
+                  </defs>
+                </svg>
+                <svg width="100%" height="100%" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g filter="url(#filter0_ii_31_2)">
+                  <path d="M11.2083 13.373C11.1003 13.373 10.9938 13.3467 10.8981 13.2965L7.5 11.5101L4.10189 13.2965C3.99177 13.3544 3.86766 13.3803 3.74358 13.3714C3.61951 13.3624 3.50041 13.3189 3.39977 13.2458C3.29912 13.1727 3.22093 13.0729 3.17405 12.9576C3.12716 12.8424 3.11344 12.7164 3.13444 12.5937L3.78353 8.80989L1.03451 6.13055C0.945453 6.0437 0.882467 5.93366 0.852668 5.81289C0.822869 5.69211 0.827445 5.56541 0.865879 5.44709C0.904313 5.32878 0.975073 5.22358 1.07016 5.14337C1.16525 5.06317 1.28088 5.01116 1.40398 4.99322L5.20313 4.44113L6.902 0.998692C6.9634 0.894727 7.05085 0.808567 7.15572 0.748713C7.26058 0.688859 7.37924 0.657379 7.49998 0.657379C7.62073 0.657379 7.73938 0.688859 7.84425 0.748713C7.94911 0.808567 8.03656 0.894727 8.09796 0.998692L9.79686 4.44107L13.596 4.99316C13.7191 5.0111 13.8347 5.06311 13.9298 5.14331C14.0249 5.22352 14.0957 5.32872 14.1341 5.44703C14.1725 5.56535 14.1771 5.69205 14.1473 5.81283C14.1175 5.9336 14.0545 6.04364 13.9655 6.13049L11.2165 8.80983L11.8655 12.5937C11.882 12.6894 11.8773 12.7875 11.8518 12.8812C11.8263 12.9749 11.7807 13.0619 11.7181 13.1361C11.6555 13.2104 11.5774 13.27 11.4894 13.3109C11.4013 13.3519 11.3054 13.373 11.2083 13.373L11.2083 13.373Z" fill="#F1F4FA"></path>
+                  </g>
+                  <path d="M11.2038 13.123L11.2084 13.123C11.269 13.123 11.329 13.1098 11.384 13.0842C11.4391 13.0586 11.4879 13.0214 11.527 12.975C11.5661 12.9286 11.5946 12.8742 11.6105 12.8156C11.6265 12.7571 11.6294 12.6957 11.6191 12.6359L10.9701 8.85209L10.9478 8.72254L11.042 8.6308L13.7909 5.95152C13.8466 5.89722 13.886 5.82844 13.9046 5.75294C13.9232 5.67744 13.9204 5.59824 13.8963 5.52427C13.8723 5.45031 13.8281 5.38455 13.7686 5.33441C13.7092 5.28429 13.637 5.25179 13.5601 5.24056C13.56 5.24056 13.56 5.24055 13.56 5.24055L9.7609 4.68847L9.63084 4.66957L9.57267 4.55171L7.87839 1.11869C7.83936 1.05534 7.78502 1.00276 7.72032 0.965835C7.6532 0.927527 7.57726 0.907379 7.49998 0.907379C7.4227 0.907379 7.34676 0.927527 7.27964 0.965835C7.21495 1.00276 7.16061 1.05534 7.12157 1.11868L5.42731 4.55177L5.36915 4.66963L5.23908 4.68853L1.44002 5.24061C1.36307 5.25182 1.29079 5.28433 1.23135 5.33447C1.17191 5.38461 1.12767 5.45038 1.10365 5.52433C1.07962 5.59829 1.07676 5.6775 1.09539 5.753C1.11401 5.82847 1.15336 5.89723 1.209 5.95152C1.20902 5.95154 1.20904 5.95156 1.20906 5.95158L3.95802 8.63085L4.05215 8.7226L4.02993 8.85215L3.38085 12.6359C3.38085 12.636 3.38085 12.636 3.38084 12.636C3.36773 12.7126 3.37631 12.7914 3.40561 12.8634C3.43492 12.9354 3.48379 12.9978 3.5467 13.0435C3.60961 13.0892 3.68405 13.1164 3.76161 13.122C3.83916 13.1276 3.91673 13.1114 3.98556 13.0753C3.98556 13.0753 3.98557 13.0752 3.98558 13.0752L7.38367 11.2888L7.5 11.2276L7.61634 11.2888L11.0142 13.0751L11.2038 13.123ZM11.2038 13.123C11.1378 13.1223 11.0729 13.1059 11.0144 13.0753L11.2038 13.123Z" stroke="url(#paint0_linear_31_2)" stroke-width="0.5"></path>
+                  <defs>
+                  <filter id="filter0_ii_31_2" x="0.833252" y="-1.34262" width="13.3335" height="20.7157" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                  <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
+                  <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"></feBlend>
+                  <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"></feColorMatrix>
+                  <feOffset dy="6"></feOffset>
+                  <feGaussianBlur stdDeviation="6"></feGaussianBlur>
+                  <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"></feComposite>
+                  <feColorMatrix type="matrix" values="0 0 0 0 0.0748611 0 0 0 0 0.683142 0 0 0 0 0.816667 0 0 0 0.25 0"></feColorMatrix>
+                  <feBlend mode="normal" in2="shape" result="effect1_innerShadow_31_2"></feBlend>
+                  <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"></feColorMatrix>
+                  <feOffset dy="-2"></feOffset>
+                  <feGaussianBlur stdDeviation="7"></feGaussianBlur>
+                  <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"></feComposite>
+                  <feColorMatrix type="matrix" values="0 0 0 0 0.101424 0 0 0 0 0.452173 0 0 0 0 0.529167 0 0 0 0.36 0"></feColorMatrix>
+                  <feBlend mode="normal" in2="effect1_innerShadow_31_2" result="effect2_innerShadow_31_2"></feBlend>
+                  </filter>
+                  <linearGradient id="paint0_linear_31_2" x1="7.49999" y1="0.657379" x2="7.49999" y2="13.3731" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#274F52" stop-opacity="0.37"></stop>
+                  <stop offset="1" stop-color="#274A52"></stop>
+                  </linearGradient>
+                  </defs>
+                </svg>
+                <svg width="100%" height="100%" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g filter="url(#filter0_ii_31_2)">
+                  <path d="M11.2083 13.373C11.1003 13.373 10.9938 13.3467 10.8981 13.2965L7.5 11.5101L4.10189 13.2965C3.99177 13.3544 3.86766 13.3803 3.74358 13.3714C3.61951 13.3624 3.50041 13.3189 3.39977 13.2458C3.29912 13.1727 3.22093 13.0729 3.17405 12.9576C3.12716 12.8424 3.11344 12.7164 3.13444 12.5937L3.78353 8.80989L1.03451 6.13055C0.945453 6.0437 0.882467 5.93366 0.852668 5.81289C0.822869 5.69211 0.827445 5.56541 0.865879 5.44709C0.904313 5.32878 0.975073 5.22358 1.07016 5.14337C1.16525 5.06317 1.28088 5.01116 1.40398 4.99322L5.20313 4.44113L6.902 0.998692C6.9634 0.894727 7.05085 0.808567 7.15572 0.748713C7.26058 0.688859 7.37924 0.657379 7.49998 0.657379C7.62073 0.657379 7.73938 0.688859 7.84425 0.748713C7.94911 0.808567 8.03656 0.894727 8.09796 0.998692L9.79686 4.44107L13.596 4.99316C13.7191 5.0111 13.8347 5.06311 13.9298 5.14331C14.0249 5.22352 14.0957 5.32872 14.1341 5.44703C14.1725 5.56535 14.1771 5.69205 14.1473 5.81283C14.1175 5.9336 14.0545 6.04364 13.9655 6.13049L11.2165 8.80983L11.8655 12.5937C11.882 12.6894 11.8773 12.7875 11.8518 12.8812C11.8263 12.9749 11.7807 13.0619 11.7181 13.1361C11.6555 13.2104 11.5774 13.27 11.4894 13.3109C11.4013 13.3519 11.3054 13.373 11.2083 13.373L11.2083 13.373Z" fill="#F1F4FA"></path>
+                  </g>
+                  <path d="M11.2038 13.123L11.2084 13.123C11.269 13.123 11.329 13.1098 11.384 13.0842C11.4391 13.0586 11.4879 13.0214 11.527 12.975C11.5661 12.9286 11.5946 12.8742 11.6105 12.8156C11.6265 12.7571 11.6294 12.6957 11.6191 12.6359L10.9701 8.85209L10.9478 8.72254L11.042 8.6308L13.7909 5.95152C13.8466 5.89722 13.886 5.82844 13.9046 5.75294C13.9232 5.67744 13.9204 5.59824 13.8963 5.52427C13.8723 5.45031 13.8281 5.38455 13.7686 5.33441C13.7092 5.28429 13.637 5.25179 13.5601 5.24056C13.56 5.24056 13.56 5.24055 13.56 5.24055L9.7609 4.68847L9.63084 4.66957L9.57267 4.55171L7.87839 1.11869C7.83936 1.05534 7.78502 1.00276 7.72032 0.965835C7.6532 0.927527 7.57726 0.907379 7.49998 0.907379C7.4227 0.907379 7.34676 0.927527 7.27964 0.965835C7.21495 1.00276 7.16061 1.05534 7.12157 1.11868L5.42731 4.55177L5.36915 4.66963L5.23908 4.68853L1.44002 5.24061C1.36307 5.25182 1.29079 5.28433 1.23135 5.33447C1.17191 5.38461 1.12767 5.45038 1.10365 5.52433C1.07962 5.59829 1.07676 5.6775 1.09539 5.753C1.11401 5.82847 1.15336 5.89723 1.209 5.95152C1.20902 5.95154 1.20904 5.95156 1.20906 5.95158L3.95802 8.63085L4.05215 8.7226L4.02993 8.85215L3.38085 12.6359C3.38085 12.636 3.38085 12.636 3.38084 12.636C3.36773 12.7126 3.37631 12.7914 3.40561 12.8634C3.43492 12.9354 3.48379 12.9978 3.5467 13.0435C3.60961 13.0892 3.68405 13.1164 3.76161 13.122C3.83916 13.1276 3.91673 13.1114 3.98556 13.0753C3.98556 13.0753 3.98557 13.0752 3.98558 13.0752L7.38367 11.2888L7.5 11.2276L7.61634 11.2888L11.0142 13.0751L11.2038 13.123ZM11.2038 13.123C11.1378 13.1223 11.0729 13.1059 11.0144 13.0753L11.2038 13.123Z" stroke="url(#paint0_linear_31_2)" stroke-width="0.5"></path>
+                  <defs>
+                  <filter id="filter0_ii_31_2" x="0.833252" y="-1.34262" width="13.3335" height="20.7157" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                  <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
+                  <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"></feBlend>
+                  <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"></feColorMatrix>
+                  <feOffset dy="6"></feOffset>
+                  <feGaussianBlur stdDeviation="6"></feGaussianBlur>
+                  <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"></feComposite>
+                  <feColorMatrix type="matrix" values="0 0 0 0 0.0748611 0 0 0 0 0.683142 0 0 0 0 0.816667 0 0 0 0.25 0"></feColorMatrix>
+                  <feBlend mode="normal" in2="shape" result="effect1_innerShadow_31_2"></feBlend>
+                  <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"></feColorMatrix>
+                  <feOffset dy="-2"></feOffset>
+                  <feGaussianBlur stdDeviation="7"></feGaussianBlur>
+                  <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"></feComposite>
+                  <feColorMatrix type="matrix" values="0 0 0 0 0.101424 0 0 0 0 0.452173 0 0 0 0 0.529167 0 0 0 0.36 0"></feColorMatrix>
+                  <feBlend mode="normal" in2="effect1_innerShadow_31_2" result="effect2_innerShadow_31_2"></feBlend>
+                  </filter>
+                  <linearGradient id="paint0_linear_31_2" x1="7.49999" y1="0.657379" x2="7.49999" y2="13.3731" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#274F52" stop-opacity="0.37"></stop>
+                  <stop offset="1" stop-color="#274A52"></stop>
+                  </linearGradient>
+                  </defs>
+                </svg>
+                <svg width="100%" height="100%" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g filter="url(#filter0_ii_31_2)">
+                  <path d="M11.2083 13.373C11.1003 13.373 10.9938 13.3467 10.8981 13.2965L7.5 11.5101L4.10189 13.2965C3.99177 13.3544 3.86766 13.3803 3.74358 13.3714C3.61951 13.3624 3.50041 13.3189 3.39977 13.2458C3.29912 13.1727 3.22093 13.0729 3.17405 12.9576C3.12716 12.8424 3.11344 12.7164 3.13444 12.5937L3.78353 8.80989L1.03451 6.13055C0.945453 6.0437 0.882467 5.93366 0.852668 5.81289C0.822869 5.69211 0.827445 5.56541 0.865879 5.44709C0.904313 5.32878 0.975073 5.22358 1.07016 5.14337C1.16525 5.06317 1.28088 5.01116 1.40398 4.99322L5.20313 4.44113L6.902 0.998692C6.9634 0.894727 7.05085 0.808567 7.15572 0.748713C7.26058 0.688859 7.37924 0.657379 7.49998 0.657379C7.62073 0.657379 7.73938 0.688859 7.84425 0.748713C7.94911 0.808567 8.03656 0.894727 8.09796 0.998692L9.79686 4.44107L13.596 4.99316C13.7191 5.0111 13.8347 5.06311 13.9298 5.14331C14.0249 5.22352 14.0957 5.32872 14.1341 5.44703C14.1725 5.56535 14.1771 5.69205 14.1473 5.81283C14.1175 5.9336 14.0545 6.04364 13.9655 6.13049L11.2165 8.80983L11.8655 12.5937C11.882 12.6894 11.8773 12.7875 11.8518 12.8812C11.8263 12.9749 11.7807 13.0619 11.7181 13.1361C11.6555 13.2104 11.5774 13.27 11.4894 13.3109C11.4013 13.3519 11.3054 13.373 11.2083 13.373L11.2083 13.373Z" fill="#F1F4FA"></path>
+                  </g>
+                  <path d="M11.2038 13.123L11.2084 13.123C11.269 13.123 11.329 13.1098 11.384 13.0842C11.4391 13.0586 11.4879 13.0214 11.527 12.975C11.5661 12.9286 11.5946 12.8742 11.6105 12.8156C11.6265 12.7571 11.6294 12.6957 11.6191 12.6359L10.9701 8.85209L10.9478 8.72254L11.042 8.6308L13.7909 5.95152C13.8466 5.89722 13.886 5.82844 13.9046 5.75294C13.9232 5.67744 13.9204 5.59824 13.8963 5.52427C13.8723 5.45031 13.8281 5.38455 13.7686 5.33441C13.7092 5.28429 13.637 5.25179 13.5601 5.24056C13.56 5.24056 13.56 5.24055 13.56 5.24055L9.7609 4.68847L9.63084 4.66957L9.57267 4.55171L7.87839 1.11869C7.83936 1.05534 7.78502 1.00276 7.72032 0.965835C7.6532 0.927527 7.57726 0.907379 7.49998 0.907379C7.4227 0.907379 7.34676 0.927527 7.27964 0.965835C7.21495 1.00276 7.16061 1.05534 7.12157 1.11868L5.42731 4.55177L5.36915 4.66963L5.23908 4.68853L1.44002 5.24061C1.36307 5.25182 1.29079 5.28433 1.23135 5.33447C1.17191 5.38461 1.12767 5.45038 1.10365 5.52433C1.07962 5.59829 1.07676 5.6775 1.09539 5.753C1.11401 5.82847 1.15336 5.89723 1.209 5.95152C1.20902 5.95154 1.20904 5.95156 1.20906 5.95158L3.95802 8.63085L4.05215 8.7226L4.02993 8.85215L3.38085 12.6359C3.38085 12.636 3.38085 12.636 3.38084 12.636C3.36773 12.7126 3.37631 12.7914 3.40561 12.8634C3.43492 12.9354 3.48379 12.9978 3.5467 13.0435C3.60961 13.0892 3.68405 13.1164 3.76161 13.122C3.83916 13.1276 3.91673 13.1114 3.98556 13.0753C3.98556 13.0753 3.98557 13.0752 3.98558 13.0752L7.38367 11.2888L7.5 11.2276L7.61634 11.2888L11.0142 13.0751L11.2038 13.123ZM11.2038 13.123C11.1378 13.1223 11.0729 13.1059 11.0144 13.0753L11.2038 13.123Z" stroke="url(#paint0_linear_31_2)" stroke-width="0.5"></path>
+                  <defs>
+                  <filter id="filter0_ii_31_2" x="0.833252" y="-1.34262" width="13.3335" height="20.7157" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                  <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
+                  <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"></feBlend>
+                  <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"></feColorMatrix>
+                  <feOffset dy="6"></feOffset>
+                  <feGaussianBlur stdDeviation="6"></feGaussianBlur>
+                  <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"></feComposite>
+                  <feColorMatrix type="matrix" values="0 0 0 0 0.0748611 0 0 0 0 0.683142 0 0 0 0 0.816667 0 0 0 0.25 0"></feColorMatrix>
+                  <feBlend mode="normal" in2="shape" result="effect1_innerShadow_31_2"></feBlend>
+                  <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"></feColorMatrix>
+                  <feOffset dy="-2"></feOffset>
+                  <feGaussianBlur stdDeviation="7"></feGaussianBlur>
+                  <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"></feComposite>
+                  <feColorMatrix type="matrix" values="0 0 0 0 0.101424 0 0 0 0 0.452173 0 0 0 0 0.529167 0 0 0 0.36 0"></feColorMatrix>
+                  <feBlend mode="normal" in2="effect1_innerShadow_31_2" result="effect2_innerShadow_31_2"></feBlend>
+                  </filter>
+                  <linearGradient id="paint0_linear_31_2" x1="7.49999" y1="0.657379" x2="7.49999" y2="13.3731" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#274F52" stop-opacity="0.37"></stop>
+                  <stop offset="1" stop-color="#274A52"></stop>
+                  </linearGradient>
+                  </defs>
+                </svg>
+                <svg width="100%" height="100%" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g filter="url(#filter0_ii_31_2)">
+                  <path d="M11.2083 13.373C11.1003 13.373 10.9938 13.3467 10.8981 13.2965L7.5 11.5101L4.10189 13.2965C3.99177 13.3544 3.86766 13.3803 3.74358 13.3714C3.61951 13.3624 3.50041 13.3189 3.39977 13.2458C3.29912 13.1727 3.22093 13.0729 3.17405 12.9576C3.12716 12.8424 3.11344 12.7164 3.13444 12.5937L3.78353 8.80989L1.03451 6.13055C0.945453 6.0437 0.882467 5.93366 0.852668 5.81289C0.822869 5.69211 0.827445 5.56541 0.865879 5.44709C0.904313 5.32878 0.975073 5.22358 1.07016 5.14337C1.16525 5.06317 1.28088 5.01116 1.40398 4.99322L5.20313 4.44113L6.902 0.998692C6.9634 0.894727 7.05085 0.808567 7.15572 0.748713C7.26058 0.688859 7.37924 0.657379 7.49998 0.657379C7.62073 0.657379 7.73938 0.688859 7.84425 0.748713C7.94911 0.808567 8.03656 0.894727 8.09796 0.998692L9.79686 4.44107L13.596 4.99316C13.7191 5.0111 13.8347 5.06311 13.9298 5.14331C14.0249 5.22352 14.0957 5.32872 14.1341 5.44703C14.1725 5.56535 14.1771 5.69205 14.1473 5.81283C14.1175 5.9336 14.0545 6.04364 13.9655 6.13049L11.2165 8.80983L11.8655 12.5937C11.882 12.6894 11.8773 12.7875 11.8518 12.8812C11.8263 12.9749 11.7807 13.0619 11.7181 13.1361C11.6555 13.2104 11.5774 13.27 11.4894 13.3109C11.4013 13.3519 11.3054 13.373 11.2083 13.373L11.2083 13.373Z" fill="#F1F4FA"></path>
+                  </g>
+                  <path d="M11.2038 13.123L11.2084 13.123C11.269 13.123 11.329 13.1098 11.384 13.0842C11.4391 13.0586 11.4879 13.0214 11.527 12.975C11.5661 12.9286 11.5946 12.8742 11.6105 12.8156C11.6265 12.7571 11.6294 12.6957 11.6191 12.6359L10.9701 8.85209L10.9478 8.72254L11.042 8.6308L13.7909 5.95152C13.8466 5.89722 13.886 5.82844 13.9046 5.75294C13.9232 5.67744 13.9204 5.59824 13.8963 5.52427C13.8723 5.45031 13.8281 5.38455 13.7686 5.33441C13.7092 5.28429 13.637 5.25179 13.5601 5.24056C13.56 5.24056 13.56 5.24055 13.56 5.24055L9.7609 4.68847L9.63084 4.66957L9.57267 4.55171L7.87839 1.11869C7.83936 1.05534 7.78502 1.00276 7.72032 0.965835C7.6532 0.927527 7.57726 0.907379 7.49998 0.907379C7.4227 0.907379 7.34676 0.927527 7.27964 0.965835C7.21495 1.00276 7.16061 1.05534 7.12157 1.11868L5.42731 4.55177L5.36915 4.66963L5.23908 4.68853L1.44002 5.24061C1.36307 5.25182 1.29079 5.28433 1.23135 5.33447C1.17191 5.38461 1.12767 5.45038 1.10365 5.52433C1.07962 5.59829 1.07676 5.6775 1.09539 5.753C1.11401 5.82847 1.15336 5.89723 1.209 5.95152C1.20902 5.95154 1.20904 5.95156 1.20906 5.95158L3.95802 8.63085L4.05215 8.7226L4.02993 8.85215L3.38085 12.6359C3.38085 12.636 3.38085 12.636 3.38084 12.636C3.36773 12.7126 3.37631 12.7914 3.40561 12.8634C3.43492 12.9354 3.48379 12.9978 3.5467 13.0435C3.60961 13.0892 3.68405 13.1164 3.76161 13.122C3.83916 13.1276 3.91673 13.1114 3.98556 13.0753C3.98556 13.0753 3.98557 13.0752 3.98558 13.0752L7.38367 11.2888L7.5 11.2276L7.61634 11.2888L11.0142 13.0751L11.2038 13.123ZM11.2038 13.123C11.1378 13.1223 11.0729 13.1059 11.0144 13.0753L11.2038 13.123Z" stroke="url(#paint0_linear_31_2)" stroke-width="0.5"></path>
+                  <defs>
+                  <filter id="filter0_ii_31_2" x="0.833252" y="-1.34262" width="13.3335" height="20.7157" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                  <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
+                  <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"></feBlend>
+                  <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"></feColorMatrix>
+                  <feOffset dy="6"></feOffset>
+                  <feGaussianBlur stdDeviation="6"></feGaussianBlur>
+                  <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"></feComposite>
+                  <feColorMatrix type="matrix" values="0 0 0 0 0.0748611 0 0 0 0 0.683142 0 0 0 0 0.816667 0 0 0 0.25 0"></feColorMatrix>
+                  <feBlend mode="normal" in2="shape" result="effect1_innerShadow_31_2"></feBlend>
+                  <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"></feColorMatrix>
+                  <feOffset dy="-2"></feOffset>
+                  <feGaussianBlur stdDeviation="7"></feGaussianBlur>
+                  <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"></feComposite>
+                  <feColorMatrix type="matrix" values="0 0 0 0 0.101424 0 0 0 0 0.452173 0 0 0 0 0.529167 0 0 0 0.36 0"></feColorMatrix>
+                  <feBlend mode="normal" in2="effect1_innerShadow_31_2" result="effect2_innerShadow_31_2"></feBlend>
+                  </filter>
+                  <linearGradient id="paint0_linear_31_2" x1="7.49999" y1="0.657379" x2="7.49999" y2="13.3731" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#274F52" stop-opacity="0.37"></stop>
+                  <stop offset="1" stop-color="#274A52"></stop>
+                  </linearGradient>
+                  </defs>
+                </svg>
+              </span>
+              <p>“I am extremely impressed.” – <a href="" class="underline">Nick Mueller</a></p>
+            </div>
+          </div>
+        </div><!--common-inner-->
+
+        <div class="group-cards">
+          <div class="swiper cards-area">
+            <ul class="swiper-wrapper cards-list">
+              <li class="swiper-slide cards item1">
+                <img src="./assets/images/card1.jpg" alt="">
+              </li>
+              <li class="swiper-slide cards item2">                
+                <img src="./assets/images/card2.jpg" alt="">
+              </li>
+              <li class="swiper-slide cards item3">               
+                <div class="video-wrap">
+                  <video class="visual-video" autoplay muted playsinline loop>
+                    <source src="https://assets.website-files.com/63abc969da54a2d108f3fe9b/63cc970ed802dfcb02802cf0_Atlas International-transcode.mp4" type="video/mp4">
+                  </video>
+                </div>      
+              </li>
+              <li class="swiper-slide cards item4">                
+                <img src="./assets/images/card4.jpg" alt="">
+              </li>
+              <li class="swiper-slide cards item5">                
+                <img src="./assets/images/card5.png" alt="">
+              </li>
+            </ul>
+          </div>
+        </div><!--cards-->
+      </section><!--intro-->
+
+      <section class="recomm-wrapper">
+        <div class="common-inner">
+          <!-- Simple as frick to -->
+          <section class="recomm">
+            <div class="group-title">
+              <h3 class="md-title">Simple as frick to <br>get started.</h3>
+              <p class="desc">Let’s not waste your time.<br>Getting started is incredibly quick and easy.</p>
+            </div>
+            <div class="group-cards">
+              <div class="top-area">
+                <div class="left card">
+                  <div class="text-wrap">
+                    <span class="num"><strong>1</strong></span>
+                    <h4 class="sm-title">Choose a subscription</h4>
+                    <p class="sm-desc">Choose between two subscription packages depending on your companies needs and decide if you’d like to pay yearly, quarterly, or monthly.</p>
+                  </div>
+                  <div class="img-wrap">
+                    <img src="./assets/images/grid1.png" alt="An example subscription card for a design and webflow subscription">
+                  </div>
+                </div>
+                <div class="right card">
+                  <div class="text-wrap">
+                    <span class="num"><strong>2</strong></span>
+                    <h4 class="sm-title">Access your dashboard</h4>
+                    <p class="sm-desc">After signing up for a subscription, you’ll get your own personal dashboard where you can manage requests, see progress, and download your files.</p>
+                  </div>
+                  <div class="img-wrap">
+                    <img src="./assets/images/grid2.jpg" alt="An example subscription card for a design and webflow subscription">
+                  </div>
+                </div>
+              </div><!--//top-area-->
+              <div class="bottom-area">
+                <div class="bottom card">
+                  <div class="img-wrap first">
+                    <img src="./assets/images/grid3.jpg" alt="A screenshot of a concept design for Greenpath Financial">
+                  </div>
+                  <div class="text-wrap">
+                    <span class="num"><strong>3</strong></span>
+                    <h4 class="sm-title">Immediately start requesting designs</h4>
+                    <p class="sm-desc">Once you have access to your dashboard, start requesting designs. You can expect to receive your designs within just a few business days.</p>
+                  </div>
+                  <div class="img-wrap last">
+                    <img src="./assets/images/grid3-1.jpg" alt="A screenshot of a concept design for Greenpath Financial">
+                  </div>
+                </div>
+              </div><!--//bottom-area-->
+            </div>
+          </section>
+
+          <!-- “Goes above and -->
+          <section class="detail">
+            <div class="group-title">
+              <h3 class="md-title">“Goes above and<br> beyond in the details.”</h3>
+              <p class="desc">– Michael Brizendine</p>
+              <span class="xs-desc">Co-Founder of<a href="" class="underline"> Yornest</a></span>
+            </div>
+            <ul class="directory-list">
+                <li class="direc-item">Landing Pages</li>
+                <li class="direc-item">Webflow Development</li>
+                <li class="direc-item">Logo Designs</li>
+                <li class="direc-item">GSAP Animations</li>
+                <li class="direc-item">Stationary</li>
+              
+                <li class="direc-item">Landing Pages</li>
+                <li class="direc-item">Webflow Development</li>
+                <li class="direc-item">Logo Designs</li>
+                <li class="direc-item">GSAP Animations</li>
+                <li class="direc-item">Stationary</li>
+            
+                <li class="direc-item">Landing Pages</li>
+                <li class="direc-item">Webflow Development</li>
+                <li class="direc-item">Logo Designs</li>
+                <li class="direc-item">GSAP Animations</li>
+                <li class="direc-item">Stationary</li>
+            
+                <li class="direc-item">Landing Pages</li>
+                <li class="direc-item">Webflow Development</li>
+                <li class="direc-item">Logo Designs</li>
+                <li class="direc-item">GSAP Animations</li>
+                <li class="direc-item">Stationary</li>
+            </ul>
+          </section>
+
+          <!-- Member Benefits -->
+          <section class="benefit">
+            <div class="group-title">
+              <h3 class="md-title">Member Benefits</h3>
+              <p class="desc">Great design is just the beginning.</p>
+            </div>
+            <div class="group-cards">
+              <div class="left card">
+                <div class="text-wrap">
+                  <span class="num"><strong>1</strong></span>
+                  <h4 class="sm-title">Choose a subscription</h4>
+                  <p class="sm-desc">Choose between two subscription packages depending on your companies needs and decide if you’d like to pay yearly, quarterly, or monthly.</p>
+                </div>
+                <div class="card-bg"></div>
+                <div class="card-border"></div>
+              </div>
+              <div class="left card">
+                <div class="text-wrap">
+                  <span class="num"><strong>2</strong></span>
+                  <h4 class="sm-title">All Yours</h4>
+                  <p class="sm-desc">Finished products are completely unique and all yours to use however you want.</p>
+                </div>
+                <div class="card-bg"></div>
+                <div class="card-border"></div>
+              </div>
+              <div class="left card">
+                <div class="text-wrap">
+                  <span class="num"><strong>3</strong></span>
+                  <h4 class="sm-title">Speedy Delivery</h4>
+                  <p class="sm-desc">Get most design requests back in 2 days and launch a website in just 2 weeks.</p>
+                </div>
+                <div class="card-bg"></div>
+                <div class="card-border"></div>
+              </div>
+              <div class="left card">
+                <div class="text-wrap">
+                  <span class="num"><strong>4</strong></span>
+                  <h4 class="sm-title">Ultra Flexible</h4>
+                  <p class="sm-desc">Pause and resume your subscription as much as you need. No questions asked.</p>
+                </div>
+                <div class="card-bg"></div>
+                <div class="card-border"></div>
+              </div>
+            </div><!--//group-cards-->
+            <div class="btn-wrap">
+              <a href="#package" class="common-md-btn"><span>Join a Plan</span>
+                <svg width="100%" height="100%" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10.5 0.5C5 0.5 0.5 5 0.5 10.5C0.5 16 5 20.5 10.5 20.5C16 20.5 20.5 16 20.5 10.5C20.5 5 16 0.5 10.5 0.5ZM14.2 11.2L11.2 14.2C10.8 14.6 10.2 14.6 9.8 14.2C9.4 13.8 9.4 13.2 9.8 12.8L11.1 11.5H7.5C6.9 11.5 6.5 11.1 6.5 10.5C6.5 9.9 6.9 9.5 7.5 9.5H11.1L9.8 8.2C9.4 7.8 9.4 7.2 9.8 6.8C10.2 6.4 10.8 6.4 11.2 6.8L14.2 9.8C14.6 10.2 14.6 10.8 14.2 11.2Z" fill="currentColor"></path>
+                </svg>              
+              </a>
+            </div>
+          </section>
+
+          <!-- Recent Work -->
+          <section class="recent">
+            <div class="group-title">
+              <h3 class="md-title">Recent Work</h3>
+              <p class="desc">Speed without the sacrifice of quality.</p>
+            </div>
+            <div class="group-cards">
+                <div class="item-area card1">
+                  <img src="./assets/images/recent1.jpg" alt="">
+                </div>
+                <div class="item-area card2">
+                  <video class="visual-video" autoplay muted playsinline loop>
+                    <source src="https://assets.website-files.com/63abc969da54a2d108f3fe9b/63cdc24770e278deed3b2801_Made by Memorable-transcode.mp4" type="video/mp4">
+                  </video>
+                </div>    
+                <div class="item-area card3">
+                  <video class="visual-video" autoplay muted playsinline loop>
+                    <source src="https://assets.website-files.com/63abc969da54a2d108f3fe9b/63cdc32d1a2c844b2a845aed_noahsupply-transcode.mp4" type="video/mp4">
+                  </video>
+                </div>    
+                <div class="item-area card4">
+                  <img src="./assets/images/recent4.jpg" alt="">
+                </div>
+            </div><!--group-cards-->
+          </section>
+          <!-- Nice to meet you, -->
+          <section class="introduce">
+            <div class="group-title">
+              <h3 class="md-title">Nice to meet you,<br>
+              <span class="highlight">I'm Noah!</span>
+              </h3>
+            </div>
+            <div class="group-info">
+              <div class="left-box"><img src="./assets/images/noah.jpg" alt="Noah's photo"></div>
+              <div class="right-box">
+                <h4 class="sm-title">Hey there. I’m Noah,<br>
+                  the designer who you’ll be<br>
+                  working with.
+                </h4>
+                <p class="dd">
+                  I am an Award Winning UX Designer and <br>
+                  Webflow Developer who has experience <br>
+                  working with small, local businesses all <br>
+                  the way to Fortune 500 companies.
+                  <br>
+                  <br>
+                  Outside of design, I have a passion for<br>
+                  golf, bass guitar, and Formula 1.
+                </p>
+                <div class="awards">
+                  <h5 class="dd strong">Featured Awards:</h5>
+                  <ul class="awards-list">
+                    <li class="awards-item">
+                      <a href="">
+                        <img src="./assets/images/2022W3.webp" alt="">
+                        <div class="item-wrap">
+                          <strong class="dd strong">2022 W3 Gold</strong>
+                          <p class="dd">Best Homepage</p>
+                        </div>
+                      </a>
+                    </li>
+                    <li class="awards-item">
+                      <a href="">
+                        <img src="./assets/images/2022W3.webp" alt="">
+                        <div class="item-wrap">
+                          <strong class="dd strong">2022 W3 Gold</strong>
+                          <p class="dd">Best Homepage</p>
+                        </div>
+                      </a>
+                    </li>
+                    <li class="awards-item">
+                      <a href="">
+                        <img src="./assets/images/awwwrds.svg" alt="">
+                        <div class="item-wrap">
+                          <strong class="dd strong">2022 W3 Gold</strong>
+                          <p class="dd">Best Homepage</p>
+                        </div>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- The greatest Webflow -->
+          <section class="opi">
+            <div class="group-title">
+              <h3 class="md-title">
+                “The greatest Webflow<br>
+                designer and developer<br>
+                I’ve ever had the<br>
+                privilege to work with.”
+              </h3>
+              <p class="desc"> – Jess Kelly</p>
+            </div>
+          </section>
+
+          <!-- Membership Packages -->
+          <section class="packages">
+            <div class="group-about">
+              <a href="#package" class="common-sm-btn">
+                <span class="text">Get 50% off your first month with coupon "FIRST50"</span>
+              </a>              
+              <h2 class="headline">
+                <span class="gradi">Membership Packages</span>
+              </h2>
+              <p class="md-desc">Choose the plan and billing cycle that<br>best fits your needs.</p>
+              <div class="tab-area">
+                <ul class="membership-list">
+                  <li class="membership-item"><a href="#tab1" class="active"><p class="dd">Yearly</p></a></li>
+                  <li class="membership-item"><a href="#tab2"><p class="dd">Quarterly</p></a></li>
+                  <li class="membership-item"><a href="#tab3"><p class="dd">Monthly</p></a></li>
+                </ul>
+              </div>
+              <div class="btn-area">
+                <p>Saving $1000/m</p>
+              </div>
+            </div>
+            <!--왼쪾오른쪽 카드영역 -->
+            <div class="group-tabcon">
+              <div id="tab1" class="item active">
+                <div class="item-area">
+                  <div class="card-top">
+                    <p class="sm-title">$2,500/m</p>
+                    <span>Billed yearly</span>
+                    <h3 class="md-title">Design <br> Membership</h3>
+                    <p class="dd">Dive right in with top-tier design instantly.</p>
+                    <div class="common-sm-btn">
+                      <a href="" class="join btn">
+                        <div class="text">Get started today</div>
+                      </div>
+                      <p class="sm-desc">Book a call</p>
+                  </div>
+                  <div class="card-bottom">
+                    <ul class="card-list">
+                      <li class="card-item">
+                        <div class="text-wrap">
+                          <img src="./assets/images/ic-chk.png" alt="">
+                          <span class="desc">Unlimited Requests</span>
+                        </div>
+                      </li>
+                      <li class="card-item">
+                        <div class="text-wrap">
+                          <img src="./assets/images/ic-chk.png" alt="">
+                          <span class="desc">Unlimited Team Members</span>
+                        </div>
+                      </li>
+                      <li class="card-item">
+                        <div class="text-wrap">
+                          <img src="./assets/images/ic-chk.png" alt="">
+                          <span class="desc">Unlimited Brands</span>
+                        </div>
+                      </li>
+                      <li class="card-item">
+                        <div class="text-wrap">
+                          <img src="./assets/images/ic-chk.png" alt="">
+                          <span class="desc">Unlimited Stock Photos</span>
+                        </div>
+                      </li>
+                      <li class="card-item">
+                        <div class="text-wrap">
+                          <img src="./assets/images/ic-chk.png" alt="">
+                          <span class="desc">Fixed Rate Forever</span>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="item-area">
+                  <div class="card-top">
+                    <p class="sm-title">$2,500/m</p>
+                    <span>Billed yearly</span>
+                    <h3 class="md-title">Design <br> Membership</h3>
+                    <p class="dd">Dive right in with top-tier design instantly.</p>
+                    <div class="common-sm-btn">
+                      <a href="" class="join btn">
+                        <div class="text">Get started today</div>
+                      </div>
+                      <p class="sm-desc">Book a call</p>
+                  </div>
+                  <div class="card-bottom">
+                    <ul class="card-list">
+                      <li class="card-item">
+                        <div class="text-wrap">
+                          <img src="./assets/images/ic-chk.png" alt="">
+                          <span class="desc">Unlimited Requests</span>
+                        </div>
+                      </li>
+                      <li class="card-item">
+                        <div class="text-wrap">
+                          <img src="./assets/images/ic-chk.png" alt="">
+                          <span class="desc">Unlimited Team Members</span>
+                        </div>
+                      </li>
+                      <li class="card-item">
+                        <div class="text-wrap">
+                          <img src="./assets/images/ic-chk.png" alt="">
+                          <span class="desc">Unlimited Brands</span>
+                        </div>
+                      </li>
+                      <li class="card-item">
+                        <div class="text-wrap">
+                          <img src="./assets/images/ic-chk.png" alt="">
+                          <span class="desc">Unlimited Stock Photos</span>
+                        </div>
+                      </li>
+                      <li class="card-item">
+                        <div class="text-wrap">
+                          <img src="./assets/images/ic-chk.png" alt="">
+                          <span class="desc">Fixed Rate Forever</span>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div><!--//tab1-->      
+              <div id="tab2" class="item">
+                <div class="item-area">
+                  <div class="card-top">
+                    <p class="sm-title">Tab222</p>
+                    <span>Billed yearly</span>
+                    <h3 class="md-title">Design <br> Membership</h3>
+                    <p class="dd">Dive right in with top-tier design instantly.</p>
+                    <div class="common-sm-btn">
+                      <a href="" class="join btn">
+                        <div class="text">Get started today</div>
+                    </div>
+                    <p class="sm-desc">Book a call</p>
+                  </div>
+                  <div class="card-bottom">
+                    <ul class="card-list">
+                      <li class="card-item">
+                        <div class="text-wrap">
+                          <img src="./assets/images/ic-chk.png" alt="">
+                          <span class="desc">Unlimited Requests</span>
+                        </div>
+                      </li>
+                      <li class="card-item">
+                        <div class="text-wrap">
+                          <img src="./assets/images/ic-chk.png" alt="">
+                          <span class="desc">Unlimited Team Members</span>
+                        </div>
+                      </li>
+                      <li class="card-item">
+                        <div class="text-wrap">
+                          <img src="./assets/images/ic-chk.png" alt="">
+                          <span class="desc">Unlimited Brands</span>
+                        </div>
+                      </li>
+                      <li class="card-item">
+                        <div class="text-wrap">
+                          <img src="./assets/images/ic-chk.png" alt="">
+                          <span class="desc">Unlimited Stock Photos</span>
+                        </div>
+                      </li>
+                      <li class="card-item">
+                        <div class="text-wrap">
+                          <img src="./assets/images/ic-chk.png" alt="">
+                          <span class="desc">Fixed Rate Forever</span>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="item-area">
+                  <div class="card-top">
+                    <p class="sm-title">Tab222</p>
+                    <span>Billed yearly</span>
+                    <h3 class="md-title">Design <br> Membership</h3>
+                    <p class="dd">Dive right in with top-tier design instantly.</p>
+                    <div class="common-sm-btn">
+                      <a href="" class="join btn">
+                        <div class="text">Get started today</div>
+                    </div>
+                    <p class="sm-desc">Book a call</p>
+                  </div>
+                  <div class="card-bottom">
+                    <ul class="card-list">
+                      <li class="card-item">
+                        <div class="text-wrap">
+                          <img src="./assets/images/ic-chk.png" alt="">
+                          <span class="desc">Unlimited Requests</span>
+                        </div>
+                      </li>
+                      <li class="card-item">
+                        <div class="text-wrap">
+                          <img src="./assets/images/ic-chk.png" alt="">
+                          <span class="desc">Unlimited Team Members</span>
+                        </div>
+                      </li>
+                      <li class="card-item">
+                        <div class="text-wrap">
+                          <img src="./assets/images/ic-chk.png" alt="">
+                          <span class="desc">Unlimited Brands</span>
+                        </div>
+                      </li>
+                      <li class="card-item">
+                        <div class="text-wrap">
+                          <img src="./assets/images/ic-chk.png" alt="">
+                          <span class="desc">Unlimited Stock Photos</span>
+                        </div>
+                      </li>
+                      <li class="card-item">
+                        <div class="text-wrap">
+                          <img src="./assets/images/ic-chk.png" alt="">
+                          <span class="desc">Fixed Rate Forever</span>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div><!--//tab2-->
+              <div id="tab3" class="item">
+                <div class="item-area">
+                  <div class="card-top">
+                    <p class="sm-title">Tab333</p>
+                    <span>Billed yearly</span>
+                    <h3 class="md-title">Design <br> Membership</h3>
+                    <p class="dd">Dive right in with top-tier design instantly.</p>
+                    <div class="common-sm-btn">
+                      <a href="" class="join btn">
+                        <div class="text">Get started today</div>
+                    </div>
+                    <p class="sm-desc">Book a call</p>
+                  </div>
+                  <div class="card-bottom">
+                    <ul class="card-list">
+                      <li class="card-item">
+                        <div class="text-wrap">
+                          <img src="./assets/images/ic-chk.png" alt="">
+                          <span class="desc">Unlimited Requests</span>
+                        </div>
+                      </li>
+                      <li class="card-item">
+                        <div class="text-wrap">
+                          <img src="./assets/images/ic-chk.png" alt="">
+                          <span class="desc">Unlimited Team Members</span>
+                        </div>
+                      </li>
+                      <li class="card-item">
+                        <div class="text-wrap">
+                          <img src="./assets/images/ic-chk.png" alt="">
+                          <span class="desc">Unlimited Brands</span>
+                        </div>
+                      </li>
+                      <li class="card-item">
+                        <div class="text-wrap">
+                          <img src="./assets/images/ic-chk.png" alt="">
+                          <span class="desc">Unlimited Stock Photos</span>
+                        </div>
+                      </li>
+                      <li class="card-item">
+                        <div class="text-wrap">
+                          <img src="./assets/images/ic-chk.png" alt="">
+                          <span class="desc">Fixed Rate Forever</span>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="item-area">
+                  <div class="card-top">
+                    <p class="sm-title">Tab333</p>
+                    <span>Billed yearly</span>
+                    <h3 class="md-title">Design <br> Membership</h3>
+                    <p class="dd">Dive right in with top-tier design instantly.</p>
+                    <div class="common-sm-btn">
+                      <a href="" class="join btn">
+                        <div class="text">Get started today</div>
+                    </div>
+                    <p class="sm-desc">Book a call</p>
+                  </div>
+                  <div class="card-bottom">
+                    <ul class="card-list">
+                      <li class="card-item">
+                        <div class="text-wrap">
+                          <img src="./assets/images/ic-chk.png" alt="">
+                          <span class="desc">Unlimited Requests</span>
+                        </div>
+                      </li>
+                      <li class="card-item">
+                        <div class="text-wrap">
+                          <img src="./assets/images/ic-chk.png" alt="">
+                          <span class="desc">Unlimited Team Members</span>
+                        </div>
+                      </li>
+                      <li class="card-item">
+                        <div class="text-wrap">
+                          <img src="./assets/images/ic-chk.png" alt="">
+                          <span class="desc">Unlimited Brands</span>
+                        </div>
+                      </li>
+                      <li class="card-item">
+                        <div class="text-wrap">
+                          <img src="./assets/images/ic-chk.png" alt="">
+                          <span class="desc">Unlimited Stock Photos</span>
+                        </div>
+                      </li>
+                      <li class="card-item">
+                        <div class="text-wrap">
+                          <img src="./assets/images/ic-chk.png" alt="">
+                          <span class="desc">Fixed Rate Forever</span>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div><!--//tab3-->
+            </div>
+          </section>
+
+          <!-- Frequently Asked Questions -->
+          <section class="qna">
+            <div class="group-title">
+              <h3 class="md-title">
+                Frequently Asked<br>
+                <span class="highlight">Questions</span>
+              </h3>
+            </div>
+            <div class="group-qna">
+              <ul class="qna-list">
+                <!-- 1 -->
+                <li class="qna-item">
+                  <div class="qna-title">
+                    <a href="" class="sm-title">How fast will I receive my designs?</a>
+                    <div class="ic-plus">
+                      <svg width="100%" height="100%" viewBox="0 0 23 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12.6827 11.9957L21.5797 12.0027C21.8458 12.0027 22.1011 11.897 22.2893 11.7088C22.4775 11.5206 22.5832 11.2654 22.5832 10.9993C22.5832 10.7331 22.4775 10.4779 22.2893 10.2897C22.1011 10.1015 21.8458 9.99579 21.5797 9.99579L12.6827 10.0029L12.6898 1.10588C12.6898 0.839739 12.5841 0.584502 12.3959 0.396315C12.2077 0.208127 11.9525 0.102404 11.6863 0.102404C11.4202 0.102404 11.165 0.208127 10.9768 0.396315C10.7886 0.584502 10.6829 0.839739 10.6829 1.10588L10.6899 10.0029L1.79295 9.99578C1.66102 9.99524 1.53029 10.0208 1.4083 10.0711C1.2863 10.1213 1.17547 10.1952 1.08218 10.2885C0.98889 10.3818 0.914996 10.4926 0.864758 10.6146C0.81452 10.7366 0.788935 10.8673 0.789476 10.9993C0.788935 11.1312 0.81452 11.2619 0.864758 11.3839C0.914995 11.5059 0.98889 11.6167 1.08218 11.71C1.17547 11.8033 1.2863 11.8772 1.4083 11.9274C1.53029 11.9777 1.66102 12.0033 1.79295 12.0027L10.6899 11.9957L10.6829 20.8926C10.6823 21.0246 10.7079 21.1553 10.7581 21.2773C10.8084 21.3993 10.8823 21.5101 10.9756 21.6034C11.0688 21.6967 11.1797 21.7706 11.3017 21.8208C11.4237 21.8711 11.5544 21.8966 11.6863 21.8961C11.8183 21.8966 11.949 21.8711 12.071 21.8208C12.193 21.7706 12.3038 21.6967 12.3971 21.6034C12.4904 21.5101 12.5643 21.3993 12.6145 21.2773C12.6648 21.1553 12.6903 21.0246 12.6898 20.8926L12.6827 11.9957Z" fill="currentColor"></path>
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="depth2">
+                    <p class="dd">Most requests get done in just two days. That being<br>
+                        said, some requests that are more complicated might<br>
+                        take a bit longer. This will be communicated if it is the case :)
+                    </p>
+                  </div>
+                </li>
+                <!-- 2 -->
+                <li class="qna-item">
+                  <div class="qna-title">
+                    <a href="" class="sm-title">Why don’t we just hire our own in-house designer?</a>
+                    <div class="ic-plus">
+                      <svg width="100%" height="100%" viewBox="0 0 23 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12.6827 11.9957L21.5797 12.0027C21.8458 12.0027 22.1011 11.897 22.2893 11.7088C22.4775 11.5206 22.5832 11.2654 22.5832 10.9993C22.5832 10.7331 22.4775 10.4779 22.2893 10.2897C22.1011 10.1015 21.8458 9.99579 21.5797 9.99579L12.6827 10.0029L12.6898 1.10588C12.6898 0.839739 12.5841 0.584502 12.3959 0.396315C12.2077 0.208127 11.9525 0.102404 11.6863 0.102404C11.4202 0.102404 11.165 0.208127 10.9768 0.396315C10.7886 0.584502 10.6829 0.839739 10.6829 1.10588L10.6899 10.0029L1.79295 9.99578C1.66102 9.99524 1.53029 10.0208 1.4083 10.0711C1.2863 10.1213 1.17547 10.1952 1.08218 10.2885C0.98889 10.3818 0.914996 10.4926 0.864758 10.6146C0.81452 10.7366 0.788935 10.8673 0.789476 10.9993C0.788935 11.1312 0.81452 11.2619 0.864758 11.3839C0.914995 11.5059 0.98889 11.6167 1.08218 11.71C1.17547 11.8033 1.2863 11.8772 1.4083 11.9274C1.53029 11.9777 1.66102 12.0033 1.79295 12.0027L10.6899 11.9957L10.6829 20.8926C10.6823 21.0246 10.7079 21.1553 10.7581 21.2773C10.8084 21.3993 10.8823 21.5101 10.9756 21.6034C11.0688 21.6967 11.1797 21.7706 11.3017 21.8208C11.4237 21.8711 11.5544 21.8966 11.6863 21.8961C11.8183 21.8966 11.949 21.8711 12.071 21.8208C12.193 21.7706 12.3038 21.6967 12.3971 21.6034C12.4904 21.5101 12.5643 21.3993 12.6145 21.2773C12.6648 21.1553 12.6903 21.0246 12.6898 20.8926L12.6827 11.9957Z" fill="currentColor"></path>
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="depth2">
+                    <p class="dd">Hiring an in-house designer these days can start at salaries upwards of $100,000 plus benefits. By taking the subscription approach, you save a significant amount of money compared to a full time designer, and can pause your membership for only when you need it.
+                    </p>
+                  </div>
+                </li>
+                <!-- 3 -->
+                <li class="qna-item">
+                  <div class="qna-title">
+                    <a href="" class="sm-title">How many requests can I have?</a>
+                    <div class="ic-plus">
+                      <svg width="100%" height="100%" viewBox="0 0 23 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12.6827 11.9957L21.5797 12.0027C21.8458 12.0027 22.1011 11.897 22.2893 11.7088C22.4775 11.5206 22.5832 11.2654 22.5832 10.9993C22.5832 10.7331 22.4775 10.4779 22.2893 10.2897C22.1011 10.1015 21.8458 9.99579 21.5797 9.99579L12.6827 10.0029L12.6898 1.10588C12.6898 0.839739 12.5841 0.584502 12.3959 0.396315C12.2077 0.208127 11.9525 0.102404 11.6863 0.102404C11.4202 0.102404 11.165 0.208127 10.9768 0.396315C10.7886 0.584502 10.6829 0.839739 10.6829 1.10588L10.6899 10.0029L1.79295 9.99578C1.66102 9.99524 1.53029 10.0208 1.4083 10.0711C1.2863 10.1213 1.17547 10.1952 1.08218 10.2885C0.98889 10.3818 0.914996 10.4926 0.864758 10.6146C0.81452 10.7366 0.788935 10.8673 0.789476 10.9993C0.788935 11.1312 0.81452 11.2619 0.864758 11.3839C0.914995 11.5059 0.98889 11.6167 1.08218 11.71C1.17547 11.8033 1.2863 11.8772 1.4083 11.9274C1.53029 11.9777 1.66102 12.0033 1.79295 12.0027L10.6899 11.9957L10.6829 20.8926C10.6823 21.0246 10.7079 21.1553 10.7581 21.2773C10.8084 21.3993 10.8823 21.5101 10.9756 21.6034C11.0688 21.6967 11.1797 21.7706 11.3017 21.8208C11.4237 21.8711 11.5544 21.8966 11.6863 21.8961C11.8183 21.8966 11.949 21.8711 12.071 21.8208C12.193 21.7706 12.3038 21.6967 12.3971 21.6034C12.4904 21.5101 12.5643 21.3993 12.6145 21.2773C12.6648 21.1553 12.6903 21.0246 12.6898 20.8926L12.6827 11.9957Z" fill="currentColor"></path>
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="depth2">
+                    <p class="dd">You are able to submit unlimited design requests and they will be delivered one at a time.
+                    </p>
+                  </div>
+                </li>
+                <!-- 4 -->
+                <li class="qna-item">
+                  <div class="qna-title">
+                    <a href="" class="sm-title">How big/complicated can my Webflow site be?</a>
+                    <div class="ic-plus">
+                      <svg width="100%" height="100%" viewBox="0 0 23 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12.6827 11.9957L21.5797 12.0027C21.8458 12.0027 22.1011 11.897 22.2893 11.7088C22.4775 11.5206 22.5832 11.2654 22.5832 10.9993C22.5832 10.7331 22.4775 10.4779 22.2893 10.2897C22.1011 10.1015 21.8458 9.99579 21.5797 9.99579L12.6827 10.0029L12.6898 1.10588C12.6898 0.839739 12.5841 0.584502 12.3959 0.396315C12.2077 0.208127 11.9525 0.102404 11.6863 0.102404C11.4202 0.102404 11.165 0.208127 10.9768 0.396315C10.7886 0.584502 10.6829 0.839739 10.6829 1.10588L10.6899 10.0029L1.79295 9.99578C1.66102 9.99524 1.53029 10.0208 1.4083 10.0711C1.2863 10.1213 1.17547 10.1952 1.08218 10.2885C0.98889 10.3818 0.914996 10.4926 0.864758 10.6146C0.81452 10.7366 0.788935 10.8673 0.789476 10.9993C0.788935 11.1312 0.81452 11.2619 0.864758 11.3839C0.914995 11.5059 0.98889 11.6167 1.08218 11.71C1.17547 11.8033 1.2863 11.8772 1.4083 11.9274C1.53029 11.9777 1.66102 12.0033 1.79295 12.0027L10.6899 11.9957L10.6829 20.8926C10.6823 21.0246 10.7079 21.1553 10.7581 21.2773C10.8084 21.3993 10.8823 21.5101 10.9756 21.6034C11.0688 21.6967 11.1797 21.7706 11.3017 21.8208C11.4237 21.8711 11.5544 21.8966 11.6863 21.8961C11.8183 21.8966 11.949 21.8711 12.071 21.8208C12.193 21.7706 12.3038 21.6967 12.3971 21.6034C12.4904 21.5101 12.5643 21.3993 12.6145 21.2773C12.6648 21.1553 12.6903 21.0246 12.6898 20.8926L12.6827 11.9957Z" fill="currentColor"></path>
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="depth2">
+                    <p class="dd">For simpler landing page sites, we can launch in around 10 days, sometimes less! However, if you want a more complicated site, timelines will be stretched past that. Good news is you can request unlimited sites, changes, and feature requests.
+                    </p>
+                  </div>
+                </li>
+                <!-- 5 -->
+                <li class="qna-item">
+                  <div class="qna-title">
+                    <a href="" class="sm-title">Do I get any revisions?</a>
+                    <div class="ic-plus">
+                      <svg width="100%" height="100%" viewBox="0 0 23 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12.6827 11.9957L21.5797 12.0027C21.8458 12.0027 22.1011 11.897 22.2893 11.7088C22.4775 11.5206 22.5832 11.2654 22.5832 10.9993C22.5832 10.7331 22.4775 10.4779 22.2893 10.2897C22.1011 10.1015 21.8458 9.99579 21.5797 9.99579L12.6827 10.0029L12.6898 1.10588C12.6898 0.839739 12.5841 0.584502 12.3959 0.396315C12.2077 0.208127 11.9525 0.102404 11.6863 0.102404C11.4202 0.102404 11.165 0.208127 10.9768 0.396315C10.7886 0.584502 10.6829 0.839739 10.6829 1.10588L10.6899 10.0029L1.79295 9.99578C1.66102 9.99524 1.53029 10.0208 1.4083 10.0711C1.2863 10.1213 1.17547 10.1952 1.08218 10.2885C0.98889 10.3818 0.914996 10.4926 0.864758 10.6146C0.81452 10.7366 0.788935 10.8673 0.789476 10.9993C0.788935 11.1312 0.81452 11.2619 0.864758 11.3839C0.914995 11.5059 0.98889 11.6167 1.08218 11.71C1.17547 11.8033 1.2863 11.8772 1.4083 11.9274C1.53029 11.9777 1.66102 12.0033 1.79295 12.0027L10.6899 11.9957L10.6829 20.8926C10.6823 21.0246 10.7079 21.1553 10.7581 21.2773C10.8084 21.3993 10.8823 21.5101 10.9756 21.6034C11.0688 21.6967 11.1797 21.7706 11.3017 21.8208C11.4237 21.8711 11.5544 21.8966 11.6863 21.8961C11.8183 21.8966 11.949 21.8711 12.071 21.8208C12.193 21.7706 12.3038 21.6967 12.3971 21.6034C12.4904 21.5101 12.5643 21.3993 12.6145 21.2773C12.6648 21.1553 12.6903 21.0246 12.6898 20.8926L12.6827 11.9957Z" fill="currentColor"></path>
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="depth2">
+                    <p class="dd">Yep! If you want a certain request revised, we will revise it until you are 1000% happy with the result.
+                    </p>
+                  </div>
+                </li>
+                <!-- 6 -->
+                <li class="qna-item">
+                  <div class="qna-title">
+                    <a href="" class="sm-title">How do I request designs?</a>
+                    <div class="ic-plus">
+                      <svg width="100%" height="100%" viewBox="0 0 23 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12.6827 11.9957L21.5797 12.0027C21.8458 12.0027 22.1011 11.897 22.2893 11.7088C22.4775 11.5206 22.5832 11.2654 22.5832 10.9993C22.5832 10.7331 22.4775 10.4779 22.2893 10.2897C22.1011 10.1015 21.8458 9.99579 21.5797 9.99579L12.6827 10.0029L12.6898 1.10588C12.6898 0.839739 12.5841 0.584502 12.3959 0.396315C12.2077 0.208127 11.9525 0.102404 11.6863 0.102404C11.4202 0.102404 11.165 0.208127 10.9768 0.396315C10.7886 0.584502 10.6829 0.839739 10.6829 1.10588L10.6899 10.0029L1.79295 9.99578C1.66102 9.99524 1.53029 10.0208 1.4083 10.0711C1.2863 10.1213 1.17547 10.1952 1.08218 10.2885C0.98889 10.3818 0.914996 10.4926 0.864758 10.6146C0.81452 10.7366 0.788935 10.8673 0.789476 10.9993C0.788935 11.1312 0.81452 11.2619 0.864758 11.3839C0.914995 11.5059 0.98889 11.6167 1.08218 11.71C1.17547 11.8033 1.2863 11.8772 1.4083 11.9274C1.53029 11.9777 1.66102 12.0033 1.79295 12.0027L10.6899 11.9957L10.6829 20.8926C10.6823 21.0246 10.7079 21.1553 10.7581 21.2773C10.8084 21.3993 10.8823 21.5101 10.9756 21.6034C11.0688 21.6967 11.1797 21.7706 11.3017 21.8208C11.4237 21.8711 11.5544 21.8966 11.6863 21.8961C11.8183 21.8966 11.949 21.8711 12.071 21.8208C12.193 21.7706 12.3038 21.6967 12.3971 21.6034C12.4904 21.5101 12.5643 21.3993 12.6145 21.2773C12.6648 21.1553 12.6903 21.0246 12.6898 20.8926L12.6827 11.9957Z" fill="currentColor"></path>
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="depth2">
+                    <p class="dd">Upon signing up, you will receive access to your own personal Trello board where you can make and edit requests. Within each request you can explain your needs however you'd like. Screen sharing, power point docs, simple text explanations – all valid ways of getting your point across.
+                    </p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- Join the design revolution. -->
+          <section class="sc-join">
+            <h3 class="md-title">Join the design revolution.</h3>
+            <p class="desc">Hop on a membership and start requesting <br>designs immediately.</p>
+            <div class="common-sm-btn">
+              <a href="" class="join btn">
+                <div class="text">Explore plans</div>
+                <div class="svg">
+                  <svg width="100%" height="100%" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10.5 0.5C5 0.5 0.5 5 0.5 10.5C0.5 16 5 20.5 10.5 20.5C16 20.5 20.5 16 20.5 10.5C20.5 5 16 0.5 10.5 0.5ZM14.2 11.2L11.2 14.2C10.8 14.6 10.2 14.6 9.8 14.2C9.4 13.8 9.4 13.2 9.8 12.8L11.1 11.5H7.5C6.9 11.5 6.5 11.1 6.5 10.5C6.5 9.9 6.9 9.5 7.5 9.5H11.1L9.8 8.2C9.4 7.8 9.4 7.2 9.8 6.8C10.2 6.4 10.8 6.4 11.2 6.8L14.2 9.8C14.6 10.2 14.6 10.8 14.2 11.2Z" fill="currentColor"></path>
+                  </svg>
+                </div>        
+              </a>
+            </div>
+          </section><!--//join-->
+        </div><!--//common-inner-->
+      </section><!--//recomm-wrapper-->
+    </main>
+
+    <footer class="footer">
+      <div class="common-inner">
+        <span class="blind">shreve</span>
+          <h1 class="logo">
+            <a href="">
+              <span class="blind">shreve</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="currentColor" viewBox="0 0 1508 862">
+                <path d="M384.365 519.094c131.126 8.351 264.67-41.079 359.393-146.124C838.481 267.925 873.717 130.183 851.635.906c-131.126-8.35-264.67 41.079-359.393 146.124-94.723 105.045-129.959 242.787-107.877 372.064ZM907 0c0 166.238 134.54 301 300.5 301S1508 166.238 1508 0H907Zm216.64 342.906c-131.131-8.351-264.675 41.079-359.398 146.124-94.723 105.045-129.959 242.787-107.877 372.064 131.126 8.351 264.67-41.079 359.395-146.124 94.72-105.045 129.96-242.787 107.88-372.064ZM601 861c0-166.238-134.538-301-300.5-301S0 694.762 0 861h601Z"></path>
+              </svg>
+            </a>
+          </h1>
+          <div class="right">
+            <div class="group-connect">
+              <a href="" class="sm-desc">Benefit</a>
+              <a href="" class="sm-desc">Benefit</a>
+              <a href="" class="sm-desc">Benefit</a>
+              <a href="" class="sm-desc">Benefit</a>
+            </div>
+            <div class="group-etc">
+              <a href="" class="sm-desc">Client Portal</a>
+              <a href="" class="sm-desc">Contact</a>
+            </div>
+          </div>
+      </div>
+    </footer>
+
+  </div><!--//wrapper--> 
+</body>
+</html>

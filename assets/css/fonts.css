@@ -1,0 +1,28 @@
+@font-face {
+  font-family: 'Satoshi';
+  src: url('https://assets.website-files.com/63abc969da54a2d108f3fe9b/63cc7a39993f00d22d46cb47_Satoshi-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Satoshi';
+  src: url('https://assets.website-files.com/63abc969da54a2d108f3fe9b/63cc7a391a2c84e4806d31eb_Satoshi-Italic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Satoshi';
+  src: url('https://assets.website-files.com/63abc969da54a2d108f3fe9b/63cc7a393a069628e78c43d0_Satoshi-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Satoshi';
+  src: url('https://assets.website-files.com/63abc969da54a2d108f3fe9b/63cc7a3915116f0453625ec4_Satoshi-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
